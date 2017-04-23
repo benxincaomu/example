@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration status="WARN" monitorInterval="30">
+	<Properties>
+		<Property name="PID">????</Property>
+		<Property name="LOG_PATTERN">%clr{%d{yyyy-MM-dd HH:mm:ss}} %clr{%5p} %clr{---}{faint} %clr{[%t]}{faint} %clr{%c}{cyan} %clr{:}{faint} %m%n%xwEx</Property>
+	</Properties>
+	<Appenders>
+		<Console name="Console" target="SYSTEM_OUT" follow="true">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+		</Console>
+		<RollingFile name="RollingFileInfo" fileName="${sys:user.home}/logs/sample.log" filePattern="${sys:user.home}/logs/$${date:yyyy-MM}/sample-%d{yyyy-MM-dd}-%i.log">
+			<PatternLayout pattern="${LOG_PATTERN}" />
+			<Policies>
+				<TimeBasedTriggeringPolicy />
+				<SizeBasedTriggeringPolicy size="100 MB" />
+			</Policies>
+		</RollingFile>
+	</Appenders>
+	<Loggers>
+		<Logger name="org.hibernate.validator.internal.util.Version" level="warn" />
+		<Logger name="org.apache.coyote.http11.Http11NioProtocol" level="warn" />
+		<Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn" />
+		<Root level="info">
+			<AppenderRef ref="Console" />
+			<AppenderRef ref="RollingFileInfo"/>
+		</Root>
+	</Loggers>
+</Configuration>

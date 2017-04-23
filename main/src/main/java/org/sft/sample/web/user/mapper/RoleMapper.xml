@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.sft.sample.web.user.mapper.RoleMapper">
+	<resultMap type="role" id="roleMap">
+		<collection property="permissions" />
+	</resultMap>
+	<select id="findRoleById" resultMap="roleMap">
+		select * from role
+		<where>
+			id=#{id}
+		</where>
+	</select>
+
+	<insert id="addRole" parameterType="role">
+		<selectKey keyProperty="id" resultType="String" order="BEFORE">
+			select replace(uuid(),'-','') from dual
+		</selectKey>
+		inser into role (id,role_name)
+		values 
+		(#{id},#{roleName})
+	</insert>
+</mapper>

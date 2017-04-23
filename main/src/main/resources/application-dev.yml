@@ -1,0 +1,15 @@
+spring:
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    url: jdbc:mysql://localhost:3306/sample?characterEncoding=utf8&useSSL=true
+    username: root
+    password: sftadmin
+    initialSize: 5
+    minIdle: 5
+    validationQuery: select 1
+mybatis:
+  configuration:
+    log-impl: stoud
+server:
+  port: 9000

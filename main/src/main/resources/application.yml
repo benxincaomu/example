@@ -1,0 +1,19 @@
+spring:
+  autoconfigure:
+    exclude:
+    - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+    - org.springframework.boot.autoconfigure.jackson.JacksonAutoConfiguration
+  profiles:
+    active: dev
+mybatis:
+  mapper-locations: classpath:org/sft/sample/web/*/mapper/*.xml
+  type-aliases-package: org.sft.sample.web
+  configuration:
+    cache-enabled: false
+    map-underscore-to-camel-case: true
+    default-fetch-size: 10
+pagehelper:
+  helper-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: count=countSql
