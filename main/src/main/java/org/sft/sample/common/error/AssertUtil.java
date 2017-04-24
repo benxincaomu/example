@@ -19,7 +19,6 @@ public class AssertUtil {
 		if(!cnd){
 			error(errorCode, formats);
 		}
-		
 	}
 	
 	

@@ -19,6 +19,12 @@
 		values 
 		(#{id},#{roleName})
 	</insert>
-	<update id="updateRole" ></update>
+	<update id="updateRole">
+		update role 
+		<set>
+			role_name=#{roleName}
+		</set>
+		<where>id=#{id}</where>
+	</update>
 	
 </mapper>
