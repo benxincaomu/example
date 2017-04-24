@@ -4,7 +4,7 @@
 	<resultMap type="role" id="roleMap">
 		<collection property="permissions" />
 	</resultMap>
-	<select id="findRoleById" resultMap="roleMap">
+	<select id="findRoleById" resultMap="roleMap" parameterType="string">
 		select * from role
 		<where>
 			id=#{id}
@@ -19,4 +19,6 @@
 		values 
 		(#{id},#{roleName})
 	</insert>
+	<update id="updateRole" ></update>
+	
 </mapper>
