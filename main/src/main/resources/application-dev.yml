@@ -10,6 +10,6 @@ spring:
     validationQuery: select 1
 mybatis:
   configuration:
-    log-impl: stoud
+    log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
 server:
   port: 9000

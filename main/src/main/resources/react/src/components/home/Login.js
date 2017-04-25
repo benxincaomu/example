@@ -18,14 +18,14 @@ class Login extends React.Component {
 		}
 		const { getFieldDecorator } = this.props.form;
 		return (
-			<div >
+			<div style={{textAlign:"center"}}>
 				<Helmet>
 					<meta charSet="utf-8" />
 					<title>登陆</title>
 				</Helmet>
 
 				<Form>
-					<div style={{ position: "absolute", width: "400px", height: "200px", left: "50%", top: "45%", margiLeft: "-200px", marginTop: "-100px", border: "1px solid #ccc", padding: "10px", textAlign: "center" }}>
+					<div style={{ position: "absolute", width: "20%", height: "200px", left: "40%", right:"50%", top: "45%", margiLeft: "-200px", marginTop: "-100px", border: "1px solid #ccc", padding: "10px", textAlign: "center" }}>
 						<h3>简单系统</h3>
 						<br />
 						<FormItem {...formItemLayout}>

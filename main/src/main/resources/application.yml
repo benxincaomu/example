@@ -12,6 +12,7 @@ mybatis:
     cache-enabled: false
     map-underscore-to-camel-case: true
     default-fetch-size: 10
+    
 pagehelper:
   helper-dialect: mysql
   reasonable: true
