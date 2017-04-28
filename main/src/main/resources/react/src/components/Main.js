@@ -11,7 +11,7 @@ class AppComponent extends React.Component {
         }
     }
     componentWillMount(){
-       JqueryUtil.setupSessionCheck();
+       JqueryUtil.extendJquery();
     }
 
     render() {

@@ -27,11 +27,10 @@ class Users extends React.Component {
 
     query() {
         $.get("./web/user/findUsers", {}, (data) => {
-            console.log("业务");
             if (data instanceof Array) {
                 this.setState({ users: data });
             }
-        })
+        },"json")
     }
 
     render() {

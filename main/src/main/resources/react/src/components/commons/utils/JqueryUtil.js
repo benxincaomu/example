@@ -19,17 +19,38 @@ export default class JqueryUtil {
         let _ajax = $.ajax, _get = $.get, _post = $.post;
         $.ajax = function (settings) {
             if (settings.success) {
-                let func=settings.success;
+                let _success = settings.success;
                 settings.success = (data, textStatus, jqXHR) => {
-                    if(JqueryUtil.checkData(data)){
-                        func(data, textStatus, jqXHR)
+                    if (JqueryUtil.checkData(data)) {
+                        _success(data, textStatus, jqXHR)
                     }
                 }
             }
             _ajax(settings);
         }
-        $.get=()=>{}
-        
+        $.get = (url, data, success, dataType) => {
+            if (success) {
+                let _success = success;
+                success = (url, data, success, dataType) => {
+                    if (JqueryUtil.checkData(data)) {
+                        _success(url, data, success, dataType);
+                    }
+                }
+            }
+            _get(url,data,success,dataType);
+        }
+        $.post=(url, data, success, dataType) => {
+            if (success) {
+                let _success = success;
+                success = (url, data, success, dataType) => {
+                    if (JqueryUtil.checkData(data)) {
+                        _success(url, data, success, dataType);
+                    }
+                }
+            }
+            _post(url,data,success,dataType);
+        }
+
     }
     /** */
     static checkData(data) {
