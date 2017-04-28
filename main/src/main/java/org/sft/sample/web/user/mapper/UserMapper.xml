@@ -11,7 +11,7 @@
 		</selectKey>
 		insert ignore into user (id,user_name,password,name,nick_name,role_id,create_time)
 		values
-		(#{id},#{userName},#{password},#{name},#{nickName},#{role_id},now())
+		(#{id},#{userName},#{password},#{name},#{nickName},#{roleId},now())
 
 	</insert>
 	<select id="findUserById" resultType="user">

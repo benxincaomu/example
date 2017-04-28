@@ -1,5 +1,7 @@
 import React from "react";
-import { Form, Input, Select, Button, InputNumber } from 'antd'
+import {Form, Input, Select, Button, InputNumber, message} from "antd";
+import JqueryUtil from "../commons/utils/JqueryUtil";
+import {hashHistory} from "react-router";
 const FormItem = Form.Item
 const SelectOption = Select.Option
 class AddUser extends React.Component {
@@ -7,6 +9,29 @@ class AddUser extends React.Component {
     super()
     this.state = {}
   }
+
+    handlePasswordBlur(e) {
+        const value = e.target.value;
+        this.setState({passwordDirty: this.state.passwordDirty || !!value});
+    }
+
+    checkConfirm(rule, value, callback) {
+        const form = this.props.form;
+        if (value && this.state.passwordDirty) {
+            form.validateFields(['confirmPassword'], {force: true});
+        }
+        callback();
+    }
+
+    checkPassword(rule, value, callback) {
+        const form = this.props.form;
+        if (value && value !== form.getFieldValue('password')) {
+            callback('两次密码输入不一致');
+        } else {
+            callback();
+        }
+    }
+
   render () {
     const formItemLayout = {
       labelCol: {span: 6},
@@ -39,12 +64,39 @@ class AddUser extends React.Component {
           <FormItem label='身高' {...formItemLayout}>
             {getFieldDecorator('height', {rules: []})(<InputNumber/>)}
           </FormItem>
+            <FormItem label='用户名' {...formItemLayout}>
+                {getFieldDecorator('userName', {
+                    rules: [
+                        {required: true, message: '请输入用户名'}
+                    ]
+                })(<Input/>)}
+            </FormItem>
+            <FormItem label="密码"  {...formItemLayout}>
+                {getFieldDecorator('password', {
+                    rules: [{required: true, message: '该项为必填项'}, {validator: this.checkConfirm.bind(this)}]
+                })(<Input type="password" onBlur={this.handlePasswordBlur.bind(this)}/>)}
+            </FormItem>
+            <FormItem label="确认新密码"  {...formItemLayout}>
+                {getFieldDecorator('confirmPassword', {
+                    rules: [{required: true, message: '该项为必填项'}, {validator: this.checkPassword.bind(this)}]
+                })(<Input type="password"/>)}
+
+            </FormItem>
+            <FormItem label='昵称' {...formItemLayout}>
+                {getFieldDecorator('nickName', {rules: []})(<Input/>)}
+          </FormItem>
         </Form>
         <Button onClick={function(){
                                      // this.props.afterSubmit()
                                      this.props.form.validateFields(function(errs,values){
                                          if(!errs){
-                                             this.props.afterSubmit(values)
+                                             JqueryUtil.post("./web/user/addUser", values, (data) => {
+                                                 if (data.message) {
+                                                     message.error(data.message);
+                                                 } else {
+                                                     hashHistory.push("/");
+                                                 }
+                                             }, "json");
                                          }
                                      }.bind(this))
                                  }.bind(this)}>
