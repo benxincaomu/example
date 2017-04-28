@@ -1,22 +1,29 @@
 import React from "react";
 import { Card, Table, Button, message, Modal } from 'antd';
-
+import { Helmet } from "react-helmet";
+import Role from "./Role"
 class Roles extends React.Component {
     constructor() {
         super();
-        this.state={
-            isAdd:false,
-            roles:[]
+        this.state = {
+            roles: [],
+            modalTitle: "",
+            modalShow: false
         }
     }
 
     render() {
         return (
             <div>
+                <Helmet>
+                    <meta charSet="utf-8" />
+                    <title>角色管理</title>
+                </Helmet>
                 <Card title="角色管理" bordered={false} style={{ width: "100%" }}>
                     <div>
                         <Button className="ant-btn ant-btn-lg" onClick={() => {
-                            message.info("新增用户");
+                            this.setState({ modalTitle: "新增角色", modalShow: true });
+
                         }}>新增</Button>
                     </div>
                     <br />
@@ -47,8 +54,8 @@ class Roles extends React.Component {
                             return record.id;
                         }} />
                 </Card>
-                <Modal title="新增角色" visible={this.state.isAdd} onCancel={() => { this.setState({ isAdd: false }) }} footer={null}>
-                    
+                <Modal title={this.state.modalTitle} visible={this.state.modalShow} onCancel={() => { this.setState({ modalShow: false }) }} footer={null}>
+                    <Role />
                 </Modal>
             </div>
         )

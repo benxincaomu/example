@@ -48,19 +48,7 @@ public interface UserMapper {
 	 * @return
 	 */
 	int updateUser(User user);
-	/**
-	 * 
-	 * @param role
-	 * @return
-	 */
-	int addRole(Role role);
 	
-	/**
-	 * 获取角色详情
-	 * @param id
-	 * @return
-	 */
-	Role findRoleById(@Param("id") String id);
 	
 	
 	
