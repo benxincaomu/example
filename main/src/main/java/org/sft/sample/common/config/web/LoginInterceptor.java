@@ -4,7 +4,6 @@ import java.io.PrintWriter;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -15,7 +14,7 @@ public class LoginInterceptor implements HandlerInterceptor {
 		Object obj = request.getSession().getAttribute("user");
 		if (obj == null) {
 			PrintWriter out=response.getWriter();
-			out.println("{\"sessionOut\":true}");
+			out.println("{\"sessionOut\":\"true\"}");
 			out.close();
 			return false;
 		}

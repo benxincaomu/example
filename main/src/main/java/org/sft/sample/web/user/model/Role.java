@@ -1,5 +1,6 @@
 package org.sft.sample.web.user.model;
 
+import java.util.Date;
 import java.util.List;
 
 import org.apache.ibatis.type.Alias;
@@ -9,6 +10,9 @@ public class Role {
 	
 	private String id;
 	private String roleName;
+	private String description;
+	private Date createDate;
+	
 	private List<Permission> permissions;
 
 	public String getId() {
@@ -33,6 +37,22 @@ public class Role {
 
 	public void setPermissions(List<Permission> permissions) {
 		this.permissions = permissions;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public Date getCreateDate() {
+		return createDate;
+	}
+
+	public void setCreateDate(Date createDate) {
+		this.createDate = createDate;
 	}
 
 }

@@ -1,5 +1,7 @@
 package org.sft.sample.web.user.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.sft.sample.web.user.mapper.UserMapper;
@@ -31,6 +33,12 @@ public class UserServiceImpl implements UserService{
 		
 		return userMapper.findUserByUserName(userName);
 	}
+
+	@Override
+	public List<User> findUsers(String userName) {
+		return userMapper.findUsers(userName, null);
+	}
+	
 	
 
 }

@@ -1,5 +1,7 @@
 package org.sft.sample.web.user.service;
 
+import java.util.List;
+
 import org.sft.sample.web.user.model.User;
 
 /**
@@ -27,5 +29,7 @@ public interface UserService {
 	 * @return
 	 */
 	User findUserByUserName(String userName);
+	
+	List<User> findUsers(String userName);
 	
 }

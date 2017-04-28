@@ -1,5 +1,7 @@
 package org.sft.sample.web.user.controller;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -8,17 +10,19 @@ import org.sft.sample.web.user.service.UserService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * @author benxi
  *
  *         2016年6月27日
  */
-@Controller
+@RestController
 @RequestMapping("web/user")
 public class UserController {
 	@Resource
@@ -45,5 +49,10 @@ public class UserController {
 		} else {
 			return new ResponseEntity<User>(user, HttpStatus.OK);
 		}
+	}
+	@GetMapping("findUsers")
+	public List<User> getUsers(String userName){
+		
+		return userService.findUsers(userName);
 	}
 }

@@ -38,13 +38,6 @@ public class LoginController extends BaseController {
 		getSession().setAttribute("user", user0);
 		return user0;
 	}
-	/**
-	 * 检查是否登录
-	 */
-	@RequestMapping("check")
-	public void checkLogin(){
-		
-	}
 
 	@GetMapping({ "authCode" })
 	public void getAuthCode(HttpServletResponse response) throws IOException {

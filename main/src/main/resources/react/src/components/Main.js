@@ -11,7 +11,7 @@ class AppComponent extends React.Component {
         }
     }
     componentWillMount(){
-        JqueryUtil.checkLogin();
+       JqueryUtil.setupSessionCheck();
     }
 
     render() {
@@ -36,8 +36,11 @@ class AppComponent extends React.Component {
                                 <SubMenu key='sub1' title={
                                     <span><Icon type="user"/>菜单</span>
                                 }>
-                                    <Menu.Item key='user'>
+                                    <Menu.Item key='/users'>
                                        用户管理
+                                    </Menu.Item>
+                                    <Menu.Item key='/roles'>
+                                       角色管理
                                     </Menu.Item>
                                 </SubMenu>
                             </Menu>

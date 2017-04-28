@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.sft.sample.web.user.model.Role;
 import org.sft.sample.web.user.model.User;
 
 /**
@@ -40,6 +41,28 @@ public interface UserMapper {
 	 * @return
 	 */
 	List<User> findUsers(@Param("userName")String userName,@Param("roleId")String roleId);
+	
+	/**
+	 * 修改用户信息
+	 * @param user 用户信息
+	 * @return
+	 */
+	int updateUser(User user);
+	/**
+	 * 
+	 * @param role
+	 * @return
+	 */
+	int addRole(Role role);
+	
+	/**
+	 * 获取角色详情
+	 * @param id
+	 * @return
+	 */
+	Role findRoleById(@Param("id") String id);
+	
+	
 	
 	
 	

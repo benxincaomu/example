@@ -3,15 +3,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { hashHistory, Router, Route } from "react-router"
 import App from './components/Main';
-import User from "./components/user/User";
-// import Home from "./components/home/Home";
+import Users from "./components/user/Users";
 import Login from "./components/home/Login";
-// Render the main component into the dom
+import Roles from "./components/user/Roles";
 ReactDOM.render(
     <Router history={hashHistory}>
         <Route path="/login" component={Login} />
         <Route path="/" component={App}>
-            <Route path={"user"} components={User} />
+            <Route path={"users"} components={Users} />
+            <Route path={"roles"} components={Roles} />
         </Route>
     </Router>
     , document.getElementById('app'));

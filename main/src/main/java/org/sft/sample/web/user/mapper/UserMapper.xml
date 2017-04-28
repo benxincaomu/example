@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.sft.sample.web.user.mapper.UserMapper">
 	<resultMap type="user" id="userMap">
-		<association property="role" column="role_id" select="org.sft.sample.web.user.mapper.RoleMapper.findRoleById" />
+		<association property="role" column="role_id" select="findRoleById" />
 	</resultMap>
 
 	<insert id="addUser" parameterType="user">
@@ -20,14 +20,14 @@
 			id=#{id}
 		</where>
 	</select>
-	<select id="findUserByUserName" resultType="user" >
+	<select id="findUserByUserName" resultType="user">
 		select * from user
 		<where>
 			user_name=#{userName}
 		</where>
 	</select>
-	<select id="findUsers">
-		select id,user_name,name,nick_name,role_id,create_ time from user
+	<select id="findUsers" resultType="user">
+		select id,user_name,name,nick_name,role_id,create_time from user
 		<where>
 			<if test="userName != null and userName!=''">
 				user_name like concat('%',#{userName},'%')
@@ -52,4 +52,72 @@
 			id=#{id}
 		</where>
 	</update>
+	<!-- roleMapper -->
+	<resultMap type="role" id="roleMap">
+		<id column="id" property="id"/>
+		<collection property="permissions" select="findPermissionsByRoleId" column="id" ofType="permission" />
+	</resultMap>
+	<select id="findRoleById" resultMap="roleMap" parameterType="string">
+		select * from role
+		<where>
+			id=#{id}
+		</where>
+	</select>
+	<select id="findRoles" resultType="role">
+		select * from role
+		<where>
+			id=#{id}
+		</where>
+	</select>
+	<insert id="addRole" parameterType="role">
+		<selectKey keyProperty="id" resultType="String" order="BEFORE">
+			select replace(uuid(),'-','') from dual
+		</selectKey>
+		inser into role (id,role_name,description,create_time)
+		values
+		(#{id},#{roleName},#{description},now())
+	</insert>
+	<update id="updateRole">
+		update role
+		<set>
+		<if test="roleName != null and roleName != ''">
+			role_name=#{roleName}
+		</if>
+		</set>
+		<where>id=#{id}</where>
+	</update>
+
+	<!-- permissionMapper -->
+	<resultMap type="permission" id="permissionMap">
+		<id column="id" property="id"/>
+	</resultMap>
+	<select id="findPermissions" resultType="permission">
+		select * from permission
+	</select>
+	<select id="findPermissionsByRoleId" resultType="permission">
+		select * from role_permission rp,permission p
+		<where>
+			rp.role_id=#{role_id}
+			and
+			rp.permisson_id=p.id
+		</where>
+	</select>
+	<insert id="addRolePermission">
+		<selectKey keyProperty="permission.id" resultType="String" order="BEFORE">
+			select replace(uuid(),'-','') from dual
+		</selectKey>
+		insert into role_permission
+		(id,role_id,permission_id)
+		values
+		<foreach collection="permissions" item="permission" open="" close="" separator=",">
+			(#{id},#{role.id},#{permission.id})
+		</foreach>
+	</insert>
+	<delete id="deleteRolePermissions" parameterType="string">
+		delete from role_permission
+		<where>
+			role_id=#{roleId}
+		</where>
+	</delete>
+
 </mapper>
