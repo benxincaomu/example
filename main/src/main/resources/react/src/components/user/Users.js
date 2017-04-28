@@ -27,9 +27,7 @@ class Users extends React.Component {
 
     query() {
         $.get("./web/user/findUsers", {}, (data) => {
-            if (data instanceof Array) {
                 this.setState({ users: data });
-            }
         },"json")
     }
 

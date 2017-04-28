@@ -22,7 +22,7 @@
 		<Logger name="org.apache.tomcat.util.net.NioSelectorPool" level="warn" />
 		<Root level="info">
 			<AppenderRef ref="Console" />
-			<AppenderRef ref="RollingFileInfo"/>
+			<!-- <AppenderRef ref="RollingFileInfo"/> -->
 		</Root>
 	</Loggers>
 </Configuration>
