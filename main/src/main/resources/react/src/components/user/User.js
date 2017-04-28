@@ -2,7 +2,7 @@ import React from "react";
 import { Form, Input, Select, Button, InputNumber } from 'antd'
 const FormItem = Form.Item
 const SelectOption = Select.Option
-class AddUser extends React.Component {
+class User extends React.Component {
   constructor () {
     super()
     this.state = {}
@@ -54,8 +54,8 @@ class AddUser extends React.Component {
     )
   }
 }
-AddUser.propTypes = {
+User.propTypes = {
   afterSubmit: React.PropTypes.func
 }
-AddUser = Form.create({})(AddUser)
-export default AddUser
+User = Form.create({})(User)
+export default User
