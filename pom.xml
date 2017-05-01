@@ -117,6 +117,24 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
+			 <plugin>
+                    <groupId>org.codehaus.mojo</groupId>
+                    <artifactId>findbugs-maven-plugin</artifactId>
+                    <version>3.0.4</version>
+                    <executions>
+                         <execution>
+                               <goals>
+                                     <goal>check</goal>
+                               </goals>
+                         </execution>
+                    </executions>
+                    <configuration>
+                         <findbugsXmlOutput>true</findbugsXmlOutput>
+                               <findbugsXmlWithMessages>true</findbugsXmlWithMessages>
+                               <xmlOutput>true</xmlOutput>
+                               <failOnError>false</failOnError>
+                    </configuration>
+                </plugin>
 		</plugins>
 	</build>
 </project>

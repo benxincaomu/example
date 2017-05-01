@@ -2,8 +2,8 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="org.sft.sample.web.user.mapper.RoleMapper">
 	<resultMap type="role" id="roleMap">
-		<id column="id" property="id"/>
-		<result column="role_name" property="roleName"/>
+		<id column="id" property="id" />
+		<result column="role_name" property="roleName" />
 		<collection property="permissions" select="findPermissionsByRoleId" column="id" ofType="permission" />
 	</resultMap>
 	<select id="findRoleById" resultMap="roleMap" parameterType="string">
@@ -22,24 +22,24 @@
 		<selectKey keyProperty="id" resultType="String" order="BEFORE">
 			select replace(uuid(),'-','') from dual
 		</selectKey>
-		inser into role (id,role_name,description,create_time)
+		insert into role (id,role_name,description,create_time)
 		values
 		(#{id},#{roleName},#{description},now())
 	</insert>
 	<update id="updateRole">
 		update role
 		<set>
-		<if test="roleName != null and roleName != ''">
-			role_name=#{roleName}
-		</if>
+			<if test="roleName != null and roleName != ''">
+				role_name=#{roleName}
+			</if>
+			<if test="description!=null and description!=''">
+				description=#{description}
+			</if>
 		</set>
 		<where>id=#{id}</where>
 	</update>
 
 	<!-- permissionMapper -->
-	<resultMap type="permission" id="permissionMap">
-		<id column="id" property="id"/>
-	</resultMap>
 	<select id="findPermissions" resultType="permission">
 		select * from permission
 	</select>
@@ -52,15 +52,13 @@
 		</where>
 	</select>
 	<insert id="addRolePermission">
-		<selectKey keyProperty="permission.id" resultType="String" order="BEFORE">
+		<selectKey keyProperty="id" resultType="String" order="BEFORE">
 			select replace(uuid(),'-','') from dual
 		</selectKey>
 		insert into role_permission
 		(id,role_id,permission_id)
 		values
-		<foreach collection="permissions" item="permission" open="" close="" separator=",">
-			(#{id},#{role.id},#{permission.id})
-		</foreach>
+		(#{id},#{roleId},#{permissionId})
 	</insert>
 	<delete id="deleteRolePermissions" parameterType="string">
 		delete from role_permission
@@ -68,5 +66,5 @@
 			role_id=#{roleId}
 		</where>
 	</delete>
-	
+
 </mapper>
