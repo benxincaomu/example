@@ -1,6 +1,8 @@
 package org.sft.sample.web.user.service;
 
 import org.sft.sample.web.user.model.Role;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageInfo;
 
 public interface RoleService {
 	/**
@@ -11,6 +13,15 @@ public interface RoleService {
 	 * @return result
 	 */
 	int addRole(Role role);
+
+	/**
+	 * 查询并分页
+	 * @param roleName 角色名
+	 * @param page 分页信息
+	 * @return
+	 */
+	PageInfo<Role> findRoles(String roleName,Page<Role> page);
+
 
 	/**
 	 * 修改角色

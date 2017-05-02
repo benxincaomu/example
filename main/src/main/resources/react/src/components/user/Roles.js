@@ -1,7 +1,8 @@
 import React from "react";
 import { Card, Table, Button, message, Modal } from 'antd';
 import { Helmet } from "react-helmet";
-import Role from "./Role"
+import Role from "./Role";
+import $ from "jquery";
 class Roles extends React.Component {
     constructor() {
         super();
@@ -10,6 +11,15 @@ class Roles extends React.Component {
             modalTitle: "",
             modalShow: false
         }
+        this.query = this.query.bind(this);
+    }
+    componentWillMount() {
+        this.query();
+    }
+    query() {
+        $.get("./web/role/findRoles", {}, (data) => {
+            this.setState({ roles: data.list });
+        }, "json");
     }
 
     render() {
@@ -40,7 +50,7 @@ class Roles extends React.Component {
                                         }}>编辑</Button>
                                         &nbsp;
                                         <Button className="ant-btn ant-btn-sm" onClick={() => {
-                                            message.info("删除");
+                                           
                                         }}>删除</Button>
                                         &nbsp;
                                   </span>
@@ -55,7 +65,10 @@ class Roles extends React.Component {
                         }} />
                 </Card>
                 <Modal title={this.state.modalTitle} visible={this.state.modalShow} onCancel={() => { this.setState({ modalShow: false }) }} footer={null}>
-                    <Role />
+                    <Role onSubmit={() => {
+                        this.query();
+                        this.setState({ modalShow: false });
+                    }} />
                 </Modal>
             </div>
         )

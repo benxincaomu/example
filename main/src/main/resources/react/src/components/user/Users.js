@@ -2,7 +2,6 @@ import React from "react";
 import { Card, Table, Button, message, Modal } from 'antd';
 import User from './User'
 import $ from "jquery"
-import JqueryUtil from "../commons/utils/JqueryUtil"
 
 class Users extends React.Component {
     constructor(props) {

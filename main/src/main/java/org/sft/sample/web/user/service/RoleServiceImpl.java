@@ -9,6 +9,11 @@ import org.sft.sample.web.user.model.RolePermission;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.github.pagehelper.ISelect;
+import com.github.pagehelper.Page;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
 @Service
 public class RoleServiceImpl implements RoleService {
 	@Resource
@@ -19,6 +24,7 @@ public class RoleServiceImpl implements RoleService {
 		return roleMapper.addRole(role);
 	}
 
+	
 	@Override
 	public int updateRole(Role role) {
 		return roleMapper.updateRole(role);
@@ -43,6 +49,17 @@ public class RoleServiceImpl implements RoleService {
 			a += roleMapper.addRolePermission(rolePermission);
 		}
 		return a;
+	}
+
+
+	@Override
+	public PageInfo<Role> findRoles(String roleName, Page<Role> page) {
+		return PageHelper.startPage(page.getPageNum(), page.getPageSize()).doSelectPageInfo(new ISelect() {
+			@Override
+			public void doSelect() {
+				roleMapper.findRoles(roleName);
+			}
+		});
 	}
 
 }

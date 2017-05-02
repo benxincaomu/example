@@ -11,7 +11,7 @@ public class Role {
 	private String id;
 	private String roleName;
 	private String description;
-	private Date createDate;
+	private Date createTime;
 	
 	private List<Permission> permissions;
 
@@ -47,12 +47,13 @@ public class Role {
 		this.description = description;
 	}
 
-	public Date getCreateDate() {
-		return createDate;
+	public Date getCreateTime() {
+		return createTime;
 	}
 
-	public void setCreateDate(Date createDate) {
-		this.createDate = createDate;
+	public void setCreateTime(Date createTime) {
+		this.createTime = createTime;
 	}
+
 
 }

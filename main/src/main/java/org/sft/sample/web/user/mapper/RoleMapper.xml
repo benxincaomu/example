@@ -15,7 +15,9 @@
 	<select id="findRoles" resultType="role">
 		select * from role
 		<where>
-			id=#{id}
+			<if test="roleName!=null and roleName!=''">
+				roleName like concat ('%',#{roleName},'%')
+			</if>
 		</where>
 	</select>
 	<insert id="addRole" parameterType="role">

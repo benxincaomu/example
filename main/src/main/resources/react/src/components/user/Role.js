@@ -59,9 +59,9 @@ class Role extends React.Component {
         )
     }
 }
-// Role.propTypes={
-//     onSubmit:React.PropTypes.func,
-//     id:React.PropTypes.string
-// }
+Role.propTypes={
+    onSubmit:React.PropTypes.func,
+    id:React.PropTypes.string
+}
 Role = Form.create({})(Role);
 export default Role;
