@@ -22,9 +22,23 @@ public class RoleController {
 	public int addRole(Role role) {
 		return roleService.addRole(role);
 	}
+
 	@GetMapping("findRoles")
-	public PageInfo<Role> findRoles(String roleName,Page<Role> page){
-		
+	public PageInfo<Role> findRoles(String roleName, Page<Role> page) {
+
 		return roleService.findRoles(roleName, page);
+	}
+
+	@PostMapping("deleteRole")
+	public int deleteRole(String id) {
+		return roleService.deleteRole(id);
+	}
+	@GetMapping("getRole")
+	public Role getRole(String id){
+		return roleService.findRoleById(id);
+	}
+	@PostMapping("updateRole")
+	public int  updateRole(Role role){
+		return roleService.updateRole(role);
 	}
 }

@@ -31,6 +31,7 @@ public class LoginController extends BaseController {
 //		if (validateCode.equals(validateCode0)) {
 //			AssertUtil.error(ApplicationErrorCode.VALIDATECODE_FAILURE);
 //		}
+		
 		User user0 = userService.findUserByUserName(user.getUserName());
 		if (user0== null ||!user0.getPassword().equalsIgnoreCase(DigestUtils.md5Hex(user.getPassword()))) {
 			AssertUtil.error(ApplicationErrorCode.USERNAME_OR_PASSWORD_FAILURE,user.getUserName());

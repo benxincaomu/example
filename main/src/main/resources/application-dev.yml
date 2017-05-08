@@ -7,8 +7,13 @@ spring:
     password: admin
     initialSize: 5
     minIdle: 5
-    maxIdle: 20
     validationQuery: select 1
+  redis:
+    host: 139.196.54.105
+    port: 6379
+    
+  session:
+    store-type: redis
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl

@@ -43,6 +43,8 @@ public interface RoleMapper {
 	 */
 	int deleteRole(@Param("id")String id);
 	
+	
+	
 	/**
 	 * 删除角色授权
 	 * @param roleId 角色id

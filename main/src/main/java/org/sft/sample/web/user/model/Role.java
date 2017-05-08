@@ -12,6 +12,7 @@ public class Role {
 	private String roleName;
 	private String description;
 	private Date createTime;
+	private boolean canDeleted;
 	
 	private List<Permission> permissions;
 
@@ -53,6 +54,14 @@ public class Role {
 
 	public void setCreateTime(Date createTime) {
 		this.createTime = createTime;
+	}
+
+	public boolean isCanDeleted() {
+		return canDeleted;
+	}
+
+	public void setCanDeleted(boolean canDeleted) {
+		this.canDeleted = canDeleted;
 	}
 
 

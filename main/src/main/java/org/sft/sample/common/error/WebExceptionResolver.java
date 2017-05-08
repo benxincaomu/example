@@ -21,7 +21,7 @@ public class WebExceptionResolver {
 		}
 		ex.printStackTrace();
 		Map<String, String> map = new HashMap<>();
-		map.put("code", errorCode.getCode());
+		map.put("errorCode", errorCode.getCode());
 		map.put("message", errorCode.getMessage());
 		return map;
 	}

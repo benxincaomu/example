@@ -41,7 +41,6 @@
 		<where>id=#{id}</where>
 	</update>
 
-	<!-- permissionMapper -->
 	<select id="findPermissions" resultType="permission">
 		select * from permission
 	</select>
@@ -62,11 +61,16 @@
 		values
 		(#{id},#{roleId},#{permissionId})
 	</insert>
+	<delete id="deleteRole" parameterType="string">
+		delete from role where id=#{id} and can_deleted=1
+	</delete>
 	<delete id="deleteRolePermissions" parameterType="string">
 		delete from role_permission
 		<where>
 			role_id=#{roleId}
 		</where>
 	</delete>
+
+
 
 </mapper>

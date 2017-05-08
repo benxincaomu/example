@@ -1,5 +1,7 @@
 package org.sft.sample.web.user.model;
 
+import java.io.Serializable;
+
 import org.apache.ibatis.type.Alias;
 
 import com.alibaba.fastjson.annotation.JSONField;
@@ -12,7 +14,6 @@ import com.alibaba.fastjson.annotation.JSONField;
  */
 @Alias("user")
 public class User {
-
 	private String id;
 	private String userName;
 	@JSONField(serialize=false)
