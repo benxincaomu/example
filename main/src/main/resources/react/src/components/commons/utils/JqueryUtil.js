@@ -16,7 +16,7 @@ export default class JqueryUtil {
 
     /** 对jquery中常用的ajax */
     static extendJquery() {
-        let _ajax = $.ajax, _get = $.get, _post = $.post;
+        let _ajax = $.ajax;
         $.ajax = function (settings) {
             if (settings.success) {
                 let _success = settings.success;
@@ -28,32 +28,11 @@ export default class JqueryUtil {
             }
             _ajax(settings);
         }
-        $.get = (url, data, success, dataType) => {
-            if (success) {
-                let _success = success;
-                success = (url, data, success, dataType) => {
-                    if (JqueryUtil.checkData(data)) {
-                        _success(url, data, success, dataType);
-                    }
-                }
-            }
-            _get(url,data,success,dataType);
-        }
-        $.post=(url, data, success, dataType) => {
-            if (success) {
-                let _success = success;
-                success = (url, data, success, dataType) => {
-                    if (JqueryUtil.checkData(data)) {
-                        _success(url, data, success, dataType);
-                    }
-                }
-            }
-            _post(url,data,success,dataType);
-        }
 
     }
     /** */
     static checkData(data) {
+        console.log("...............")
         if (data.sessionOut) {
             message.warn("请登录");
             hashHistory.push("/login");

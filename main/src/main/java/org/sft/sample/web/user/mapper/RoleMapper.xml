@@ -12,6 +12,9 @@
 			id=#{id}
 		</where>
 	</select>
+	<select id="getRoleByRoleName" parameterType="string" resultType="role">
+		select * from role where role_name = #{roleName}
+	</select>
 	<select id="findRoles" resultType="role">
 		select * from role
 		<where>
@@ -19,6 +22,7 @@
 				roleName like concat ('%',#{roleName},'%')
 			</if>
 		</where>
+		order by role_name
 	</select>
 	<insert id="addRole" parameterType="role">
 		<selectKey keyProperty="id" resultType="String" order="BEFORE">
@@ -32,7 +36,7 @@
 		update role
 		<set>
 			<if test="roleName != null and roleName != ''">
-				role_name=#{roleName}
+				role_name=#{roleName},
 			</if>
 			<if test="description!=null and description!=''">
 				description=#{description}
@@ -44,6 +48,7 @@
 	<select id="findPermissions" resultType="permission">
 		select * from permission
 	</select>
+	
 	<select id="findPermissionsByRoleId" resultType="permission">
 		select * from role_permission rp,permission p
 		<where>

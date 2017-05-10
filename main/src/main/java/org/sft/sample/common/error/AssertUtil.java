@@ -1,5 +1,7 @@
 package org.sft.sample.common.error;
 
+import java.util.Objects;
+
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -19,6 +21,12 @@ public class AssertUtil {
 		if(!cnd){
 			error(errorCode, formats);
 		}
+	}
+	public static void isNull(Object cnd,ApplicationErrorCode errorCode,String... formats){
+		isTrue(Objects.isNull(cnd), errorCode, formats);
+	}
+	public static void isNotNull(Object cnd,ApplicationErrorCode errorCode,String... formats){
+		isTrue(Objects.nonNull(cnd), errorCode, formats);
 	}
 	
 	

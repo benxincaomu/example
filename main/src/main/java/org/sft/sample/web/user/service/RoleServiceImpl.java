@@ -2,6 +2,8 @@ package org.sft.sample.web.user.service;
 
 import javax.annotation.Resource;
 
+import org.sft.sample.common.error.ApplicationErrorCode;
+import org.sft.sample.common.error.AssertUtil;
 import org.sft.sample.web.user.mapper.RoleMapper;
 import org.sft.sample.web.user.model.Permission;
 import org.sft.sample.web.user.model.Role;
@@ -21,6 +23,8 @@ public class RoleServiceImpl implements RoleService {
 
 	@Override
 	public int addRole(Role role) {
+		Role role0=roleMapper.getRoleByRoleName(role.getRoleName());
+		AssertUtil.isNull(role0, ApplicationErrorCode.EXIST_DUPLICATION, "角色名="+role.getRoleName());
 		return roleMapper.addRole(role);
 	}
 
@@ -54,6 +58,7 @@ public class RoleServiceImpl implements RoleService {
 
 
 	@Override
+	@Transactional
 	public PageInfo<Role> findRoles(String roleName, Page<Role> page) {
 		return PageHelper.startPage(page.getPageNum(), page.getPageSize()).doSelectPageInfo(new ISelect() {
 			@Override

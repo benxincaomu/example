@@ -1,7 +1,10 @@
 package org.sft.sample.web.user.controller;
 
+import java.util.Map;
+
 import javax.annotation.Resource;
 
+import org.sft.sample.common.utils.SampleResultRender;
 import org.sft.sample.web.user.model.Role;
 import org.sft.sample.web.user.service.RoleService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,8 +22,8 @@ public class RoleController {
 	private RoleService roleService;
 
 	@PostMapping("addRole")
-	public int addRole(Role role) {
-		return roleService.addRole(role);
+	public Map<String, Object> addRole(Role role) {
+		return SampleResultRender.render(roleService.addRole(role));
 	}
 
 	@GetMapping("findRoles")
@@ -30,15 +33,15 @@ public class RoleController {
 	}
 
 	@PostMapping("deleteRole")
-	public int deleteRole(String id) {
-		return roleService.deleteRole(id);
+	public Map<String, Object> deleteRole(String id) {
+		return SampleResultRender.render(roleService.deleteRole(id));
 	}
 	@GetMapping("getRole")
 	public Role getRole(String id){
 		return roleService.findRoleById(id);
 	}
 	@PostMapping("updateRole")
-	public int  updateRole(Role role){
-		return roleService.updateRole(role);
+	public Map<String, Object>  updateRole(Role role){
+		return SampleResultRender.render(roleService.updateRole(role));
 	}
 }

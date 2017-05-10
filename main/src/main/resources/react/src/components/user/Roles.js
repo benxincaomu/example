@@ -9,7 +9,8 @@ class Roles extends React.Component {
         this.state = {
             roles: [],
             modalTitle: "",
-            modalShow: false
+            modalShow: false,
+            roleId: ""
         }
         this.query = this.query.bind(this);
     }
@@ -32,8 +33,7 @@ class Roles extends React.Component {
                 <Card title="角色管理" bordered={false} style={{ width: "100%" }}>
                     <div>
                         <Button className="ant-btn ant-btn-lg" onClick={() => {
-                            this.setState({ modalTitle: "新增角色", modalShow: true });
-
+                            this.setState({ modalTitle: "新增角色", roleId: "", modalShow: true });
                         }}>新增</Button>
                     </div>
                     <br />
@@ -46,12 +46,15 @@ class Roles extends React.Component {
                                 return (
                                     <span>
                                         <Button className="ant-btn ant-btn-sm" onClick={() => {
-                                            message.info("编辑");
+                                            this.setState({ modalTitle: "编辑角色", modalShow: true, roleId: record.id });
                                         }}>编辑</Button>
                                         &nbsp;
-                                        <Button className="ant-btn ant-btn-sm" onClick={() => {
-                                           
-                                        }}>删除</Button>
+                                        {record.canDeleted &&
+                                            <Button className="ant-btn ant-btn-sm" onClick={() => {
+
+                                            }}>删除</Button>
+                                        }
+
                                         &nbsp;
                                   </span>
 
@@ -65,10 +68,12 @@ class Roles extends React.Component {
                         }} />
                 </Card>
                 <Modal title={this.state.modalTitle} visible={this.state.modalShow} onCancel={() => { this.setState({ modalShow: false }) }} footer={null}>
-                    <Role onSubmit={() => {
-                        this.query();
-                        this.setState({ modalShow: false });
-                    }} />
+                    <Role id={this.state.roleId}
+                        onSubmit={() => {
+
+                            this.query();
+                            this.setState({ modalShow: false });
+                        }} />
                 </Modal>
             </div>
         )

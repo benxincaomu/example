@@ -5,7 +5,9 @@ public enum ApplicationErrorCode {
 	VALIDATECODE_FAILURE("1000","验证码错误"),
 	USERNAME_OR_PASSWORD_FAILURE("10001","用户名或密码错误:%s"),
 	RESOURCE_NOT_EXIST("40004", "指定的资源不存在"),
+	EXIST_DUPLICATION("40005","重复的名称:%s"),
 	DATA_VALIDATE_FAILURE("99999","数据校验失败"),
+	
 	;
 
 	private String code;

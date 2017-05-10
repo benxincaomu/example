@@ -22,6 +22,13 @@ public interface RoleMapper {
 	 * @return
 	 */
 	Role findRoleById(@Param("id") String id);
+	
+	/**
+	 * 根据角色名获取角色详情
+	 * @param roleName 角色名
+	 * @return
+	 */
+	Role getRoleByRoleName(@Param("roleName") String roleName);
 	/**
 	 * 查找角色
 	 * @param roleName
