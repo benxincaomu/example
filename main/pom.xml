@@ -36,7 +36,7 @@
 			<resource>
 				<directory>src/main/resources</directory>
 				<excludes>
-					<exclude>react/**</exclude>
+					<exclude>web/**</exclude>
 				</excludes>
 			</resource>
 			<resource>
