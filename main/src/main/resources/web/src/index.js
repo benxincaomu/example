@@ -6,6 +6,7 @@ import App from './components/Main';
 import Users from "./components/user/Users";
 import Login from "./components/home/Login";
 import Roles from "./components/user/Roles";
+import registerServiceWorker from './registerServiceWorker';
 ReactDOM.render(
     <Router history={hashHistory}>
         <Route path="/login" component={Login} />
@@ -14,4 +15,5 @@ ReactDOM.render(
             <Route path={"roles"} components={Roles} />
         </Route>
     </Router>
-    , document.getElementById('app'));
+    , document.getElementById('root'));
+registerServiceWorker();
