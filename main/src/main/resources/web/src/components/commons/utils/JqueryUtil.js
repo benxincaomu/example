@@ -1,5 +1,5 @@
 import $ from "jquery";
-import { message } from "antd";
+import { message,Modal } from "antd";
 import createBrowserHistory from 'history/createBrowserHistory'
 
 const history = createBrowserHistory()
@@ -34,10 +34,9 @@ export default class JqueryUtil {
     }
     /** */
     static checkData(data) {
-        console.log("...............")
         if (data.sessionOut) {
             message.warn("请登录");
-            history.push("/login");
+            // history.push("/login");
             return false;
         } else if (data.errorCode) {
             message.error(data.message);

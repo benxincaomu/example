@@ -2,16 +2,15 @@ import React from "react";
 import { Helmet } from "react-helmet";
 import { Form, Input, Button, message } from "antd";
 import JqueryUtil from "../commons/utils/JqueryUtil";
-import createBrowserHistory from 'history/createBrowserHistory'
+import PropTypes from "prop-types"
 
-const history = createBrowserHistory()
 const FormItem = Form.Item;
 
 class Login extends React.Component {
 	constructor() {
 		super();
 	}
-
+	
 
 	render() {
 		const formItemLayout = {
@@ -27,7 +26,7 @@ class Login extends React.Component {
 				</Helmet>
 
 				<Form>
-					<div style={{ position: "absolute", width: "20%", height: "200px", left: "40%", right:"50%", top: "45%", margiLeft: "-200px", marginTop: "-100px", border: "1px solid #ccc", padding: "10px", textAlign: "center" }}>
+					<div /**style={{ position: "absolute", width: "20%", height: "200px", left: "40%", right:"50%", top: "45%", margiLeft: "-200px", marginTop: "-100px", border: "1px solid #ccc", padding: "10px", textAlign: "center" }} */>
 						<h3>简单系统</h3>
 						<br />
 						<FormItem {...formItemLayout}>
@@ -52,7 +51,7 @@ class Login extends React.Component {
 											if (data.message) {
 												message.error(data.message);
 											}else{
-												history.push("/");
+												this.props.success();
 											}
 										}, "json");
 									}
@@ -66,6 +65,12 @@ class Login extends React.Component {
 
 	}
 
+}
+Login.propTypes = {
+	success:PropTypes.func
+}
+Login.defaultProps = {
+	success:null
 }
 Login = Form.create({})(Login);
 export default Login;

@@ -2,7 +2,7 @@ import React from "react";
 import {Form, Input, Select, Button, InputNumber, message} from "antd";
 import JqueryUtil from "../commons/utils/JqueryUtil";
 import createBrowserHistory from 'history/createBrowserHistory'
-
+import PropTypes from "prop-types"
 const history = createBrowserHistory()
 const FormItem = Form.Item
 const SelectOption = Select.Option
@@ -100,7 +100,7 @@ class User extends React.Component {
                                                  }
                                              }, "json");
                                          }
-                                     }.bind(this))
+                                     })
                                  }.bind(this)}>
           提交
         </Button>
@@ -109,7 +109,7 @@ class User extends React.Component {
   }
 }
 User.propTypes = {
-  afterSubmit: React.PropTypes.func
+  afterSubmit: PropTypes.func
 }
 User = Form.create({})(User)
 export default User

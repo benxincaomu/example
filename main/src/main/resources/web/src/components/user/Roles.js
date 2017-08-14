@@ -67,7 +67,7 @@ class Roles extends React.Component {
                             return record.id;
                         }} />
                 </Card>
-                <Modal title={this.state.modalTitle} visible={this.state.modalShow} onCancel={() => { this.setState({ modalShow: false }) }} footer={null}>
+                <Modal key={this.state.roleId} title={this.state.modalTitle} visible={this.state.modalShow} onCancel={() => { this.setState({ modalShow: false }) }} footer={null}>
                     <Role id={this.state.roleId}
                         onSubmit={() => {
 
