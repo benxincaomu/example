@@ -8,3 +8,6 @@
 /*/.classpath
 /*/.factorypath
 /*/target/
+/**/.gitignore
+/**/.vscode/settings.json
+/**/*.lock
