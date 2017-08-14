@@ -2,14 +2,14 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
-    url: jdbc:mysql://139.196.54.105:3306/sample?characterEncoding=utf8
+    url: jdbc:mysql://192.168.112.134:3306/sample?characterEncoding=utf8
     username: root
-    password: admin
+    password: sftadmin
     initialSize: 5
     minIdle: 5
     validationQuery: select 1
   redis:
-    host: 139.196.54.105
+    host: 192.168.112.134
     port: 6379
     
   session:

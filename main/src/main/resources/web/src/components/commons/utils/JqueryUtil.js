@@ -1,6 +1,8 @@
 import $ from "jquery";
 import { message } from "antd";
-import { hashHistory } from "react-router";
+import createBrowserHistory from 'history/createBrowserHistory'
+
+const history = createBrowserHistory()
 export default class JqueryUtil {
     static post(url, params, success, type) {
 
@@ -35,7 +37,7 @@ export default class JqueryUtil {
         console.log("...............")
         if (data.sessionOut) {
             message.warn("请登录");
-            hashHistory.push("/login");
+            history.push("/login");
             return false;
         } else if (data.errorCode) {
             message.error(data.message);

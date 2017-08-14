@@ -1,8 +1,10 @@
 import React from "react";
-import { hashHistory } from "react-router"
 import { Helmet } from "react-helmet";
 import { Form, Input, Button, message } from "antd";
 import JqueryUtil from "../commons/utils/JqueryUtil";
+import createBrowserHistory from 'history/createBrowserHistory'
+
+const history = createBrowserHistory()
 const FormItem = Form.Item;
 
 class Login extends React.Component {
@@ -50,7 +52,7 @@ class Login extends React.Component {
 											if (data.message) {
 												message.error(data.message);
 											}else{
-												hashHistory.push("/");
+												history.push("/");
 											}
 										}, "json");
 									}

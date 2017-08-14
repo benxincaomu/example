@@ -1,7 +1,9 @@
 import React from "react";
 import {Form, Input, Select, Button, InputNumber, message} from "antd";
 import JqueryUtil from "../commons/utils/JqueryUtil";
-import {hashHistory} from "react-router";
+import createBrowserHistory from 'history/createBrowserHistory'
+
+const history = createBrowserHistory()
 const FormItem = Form.Item
 const SelectOption = Select.Option
 class User extends React.Component {
@@ -94,7 +96,7 @@ class User extends React.Component {
                                                  if (data.message) {
                                                      message.error(data.message);
                                                  } else {
-                                                     hashHistory.push("/");
+                                                     history.push("/");
                                                  }
                                              }, "json");
                                          }
