@@ -1,0 +1,10 @@
+/.settings/
+/.project
+/.classpath
+/.factorypath
+
+/*/.settings/
+/*/.project
+/*/.classpath
+/*/.factorypath
+/*/target/
