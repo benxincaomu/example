@@ -7,6 +7,7 @@ import Users from "./user/Users";
 import Login from "./home/Login"
 import Roles from "./user/Roles"
 
+
 const history = createBrowserHistory()
 const { SubMenu } = Menu;
 const { Header, Footer, Sider, Content } = Layout;
@@ -26,7 +27,7 @@ class AppComponent extends React.Component {
         this.setState({ isLogin: false });
     }
     componentWillMount() {
-        JqueryUtil.extendJquery();
+        JqueryUtil.extendJquery(this.notLoginTodo.bind(this));
     }
 
     render() {

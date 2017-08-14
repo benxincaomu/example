@@ -1,15 +1,12 @@
 import $ from "jquery";
-import { message,Modal } from "antd";
+import { message, Modal } from "antd";
 import createBrowserHistory from 'history/createBrowserHistory'
 
 const history = createBrowserHistory()
 export default class JqueryUtil {
     static post(url, params, success, type) {
-
         $.post(url, params, function (data, textStatus, jqXHR) {
-
             success(data);
-
         }, type ? type : "json")
     }
     static checkLogin() {
@@ -17,7 +14,10 @@ export default class JqueryUtil {
     }
 
     /** 对jquery中常用的ajax */
-    static extendJquery() {
+    static extendJquery(notLoginTodo) {
+        if (notLoginTodo) {
+            JqueryUtil.notLoginTodo=notLoginTodo
+        }
         let _ajax = $.ajax;
         $.ajax = function (settings) {
             if (settings.success) {
@@ -36,7 +36,7 @@ export default class JqueryUtil {
     static checkData(data) {
         if (data.sessionOut) {
             message.warn("请登录");
-            // history.push("/login");
+            JqueryUtil.notLoginTodo();
             return false;
         } else if (data.errorCode) {
             message.error(data.message);
