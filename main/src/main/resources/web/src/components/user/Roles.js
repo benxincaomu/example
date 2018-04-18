@@ -49,6 +49,10 @@ class Roles extends React.Component {
                                             this.setState({ modalTitle: "编辑角色", modalShow: true, roleId: record.id });
                                         }}>编辑</Button>
                                         &nbsp;
+                                        <Button className="ant-btn ant-btn-sm" onClick={()=>{
+                                            this.setState({roleId:record.id})
+                                        }}>授权</Button>
+                                        &nbsp;
                                         {record.canDeleted &&
                                             <Button className="ant-btn ant-btn-sm" onClick={() => {
 
@@ -67,7 +71,7 @@ class Roles extends React.Component {
                             return record.id;
                         }} />
                 </Card>
-                <Modal key={this.state.roleId} title={this.state.modalTitle} visible={this.state.modalShow} onCancel={() => { this.setState({ modalShow: false }) }} footer={null}>
+                <Modal key={this.state.roleId} title={this.state.modalTitle} visible={this.state.EditModalShow} onCancel={() => { this.setState({ modalShow: false }) }} footer={null}>
                     <Role id={this.state.roleId}
                         onSubmit={() => {
 
@@ -75,6 +79,7 @@ class Roles extends React.Component {
                             this.setState({ modalShow: false });
                         }} />
                 </Modal>
+                <Modal title="授权" ></Modal>
             </div>
         )
     }

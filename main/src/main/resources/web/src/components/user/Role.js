@@ -28,7 +28,7 @@ class Role extends React.Component {
             // this.props.form.resetFields();
             return;
         }
-        if (props.id == this.state.id) {
+        if (props.id === this.state.id) {
             return;
         }
 

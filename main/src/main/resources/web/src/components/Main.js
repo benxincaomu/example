@@ -1,6 +1,7 @@
 import React from 'react'
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom'
+import {Router, Route, Link } from 'react-router-dom'
 import { Layout, Menu, Icon, Modal } from 'antd'
+import $ from 'jquery';
 import JqueryUtil from "../components/commons/utils/JqueryUtil"
 import createBrowserHistory from 'history/createBrowserHistory'
 import Users from "./user/Users";
@@ -15,11 +16,11 @@ class AppComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            isLogin: true
+            isLogin: true,
+            permissions:[]
         }
-        
-
     }
+
     loginSuCallback() {
         this.setState({ isLogin: true });
     }
@@ -28,6 +29,7 @@ class AppComponent extends React.Component {
     }
     componentWillMount() {
         JqueryUtil.extendJquery(this.notLoginTodo.bind(this));
+        $.get("/web/role/permissions",{},(data)=>{},"json")
     }
 
     render() {

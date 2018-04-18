@@ -1,5 +1,7 @@
 package org.sft.sample.web.user.service;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.sft.sample.common.error.ApplicationErrorCode;
@@ -62,5 +64,10 @@ public class RoleServiceImpl implements RoleService {
          */
         return PageHelper.startPage(page.getPageNum(), page.getPageSize()).doSelectPageInfo(() -> roleMapper.findRoles(roleName));
     }
+
+	@Override
+	public List<Permission> getAllPermissions(){
+		return roleMapper.getAllPermissions();
+	}
 
 }

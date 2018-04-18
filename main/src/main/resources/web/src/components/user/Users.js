@@ -26,8 +26,8 @@ class Users extends React.Component {
 
     query() {
         $.get("./web/user/findUsers", {}, (data) => {
-                this.setState({ users: data });
-        },"json")
+            this.setState({ users: data });
+        }, "json")
     }
 
     render() {
@@ -74,12 +74,11 @@ class Users extends React.Component {
                                         <Button className="ant-btn ant-btn-sm">编辑</Button>&nbsp;&nbsp;
 
                                         <Button className="ant-btn ant-btn-sm" onClick={() => {
-                                            {/* ajax请求后台删除 */
-                                            }
+                                            {/* ajax请求后台删除 */ }
                                             let users = [];
                                             console.log(this.state.users.length);
                                             for (let i = 0; i < this.state.users.length; i++) {
-                                                if (i != index) {
+                                                if (i !== index) {
                                                     users.push(this.state.users[i]);
                                                 }
                                             }
@@ -101,11 +100,11 @@ class Users extends React.Component {
                 </Card>
                 <Modal title="新增用户" visible={this.state.userModelShow} onCancel={() => { this.setState({ userModelShow: false }) }} footer={null}>
                     <User afterSubmit={function (values) {
-
-                        values["id"] = this.state.idx++;
-                        this.state.users.push(values);
-                        this.state.isAdd = false;
-                        this.setState(this.state);
+                        let idx=this.state.idx;
+                        values["id"] = idx++;
+                        let users=this.state.users;
+                        users.push(values);
+                        this.setState({users:users,isAdd:false});
                     }.bind(this)} />
                 </Modal>
             </div>

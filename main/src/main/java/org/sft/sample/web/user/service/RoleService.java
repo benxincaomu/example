@@ -1,5 +1,8 @@
 package org.sft.sample.web.user.service;
 
+import java.util.List;
+
+import org.sft.sample.web.user.model.Permission;
 import org.sft.sample.web.user.model.Role;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageInfo;
@@ -56,4 +59,10 @@ public interface RoleService {
 	 * @return
 	 */
 	int updateRolePermissions(Role role);
+	
+	/**
+	 * 获取所有权限列表
+	 * @return
+	 */
+	List<Permission> getAllPermissions();
 }

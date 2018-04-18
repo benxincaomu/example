@@ -1,10 +1,12 @@
 package org.sft.sample.web.user.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.sft.sample.common.utils.SampleResultRender;
+import org.sft.sample.web.user.model.Permission;
 import org.sft.sample.web.user.model.Role;
 import org.sft.sample.web.user.service.RoleService;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -55,7 +57,16 @@ public class RoleController{
 	/**
 	 * 获取所有权限列表
 	 */
-	public void getAllPermissions(){
-		
+	@GetMapping("permissions")
+	public List<Permission> getAllPermissions(){
+		return roleService.getAllPermissions();
+	}
+	/**
+	 * 获取当前角色所拥有的权限
+	 * @return
+	 */
+	@GetMapping("rolePermissions")
+	public List<Permission> getRolePermissions(){
+		return null;
 	}
 }

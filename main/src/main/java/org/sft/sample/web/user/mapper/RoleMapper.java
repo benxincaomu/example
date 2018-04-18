@@ -1,10 +1,9 @@
 package org.sft.sample.web.user.mapper;
 
-import java.security.Permission;
 import java.util.List;
-
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.sft.sample.web.user.model.Permission;
 import org.sft.sample.web.user.model.Role;
 import org.sft.sample.web.user.model.RolePermission;
 
