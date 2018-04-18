@@ -20,6 +20,7 @@ mybatis:
     map-underscore-to-camel-case: true
     default-fetch-size: 10
     lazy-loading-enabled: true
+    log-impl: org.apache.ibatis.logging.log4j2.Log4j2LoggerImpl
 pagehelper:
   helper-dialect: mysql
   reasonable: true

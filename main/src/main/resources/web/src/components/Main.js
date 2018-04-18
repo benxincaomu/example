@@ -29,7 +29,7 @@ class AppComponent extends React.Component {
     }
     componentWillMount() {
         JqueryUtil.extendJquery(this.notLoginTodo.bind(this));
-        $.get("/web/role/permissions",{},(data)=>{},"json")
+        
     }
 
     render() {

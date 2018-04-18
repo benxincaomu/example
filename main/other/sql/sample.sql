@@ -23,6 +23,7 @@ CREATE TABLE `permission` (
   `id` varchar(36) NOT NULL,
   `name` varchar(20) DEFAULT NULL COMMENT '菜单名',
   `path` varchar(20) DEFAULT NULL COMMENT '路径',
+  `parent_id` varchar(36) DEFAULT NULL COMMENT '父节点',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='权限菜单';
 

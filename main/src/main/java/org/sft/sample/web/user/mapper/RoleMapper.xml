@@ -4,12 +4,19 @@
 	<resultMap type="role" id="roleMap">
 		<id column="id" property="id" />
 		<result column="role_name" property="roleName" />
-		<collection property="permissions" select="findPermissionsByRoleId" column="id" ofType="permission" fetchType="lazy"/>
+		<collection property="permissions" select="findPermissionsByRoleId" column="id"  fetchType="eager"/>
+	</resultMap>
+	<resultMap type="org.sft.sample.web.user.model.Permission" id="permissionMap">
+		<id column="id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="path" property="path"/>
+		<result column="parent_id" property="parentId"/>
+		<collection property="subPermissions" select="findPermissionsByParentId" column="id" fetchType="eager"/>
 	</resultMap>
 	<select id="findRoleById" resultMap="roleMap" parameterType="string">
 		select * from role
 		<where>
-			id=#{id}
+			id=#{id} 
 		</where>
 	</select>
 	<select id="getRoleByRoleName" parameterType="string" resultType="role">
@@ -46,7 +53,7 @@
 	</update>
 
 	<select id="findPermissions" resultType="permission">
-		select * from permission
+		select * from permission where parent_id is null
 	</select>
 
 	<select id="findPermissionsByRoleId" resultType="permission">
@@ -56,6 +63,9 @@
 			and
 			rp.permisson_id=p.id
 		</where>
+	</select>
+	<select id="findPermissionsByParentId" resultMap="permissionMap" parameterType="string">
+		select * from permission where parent_id=#{id}
 	</select>
 	<insert id="addRolePermission">
 		<selectKey keyProperty="id" resultType="String" order="BEFORE">
@@ -76,8 +86,8 @@
 			role_id=#{roleId}
 		</where>
 	</delete>
-	<select id="getAllPermissions" resultType="org.sft.sample.web.user.model.Permission">
-		select * from permission
+	<select id="getAllPermissions" resultMap="permissionMap">
+		select * from permission where parent_id is null
 	</select>
 
 

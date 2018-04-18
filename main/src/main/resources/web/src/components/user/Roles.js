@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Table, Button, message, Modal } from 'antd';
 import { Helmet } from "react-helmet";
 import Role from "./Role";
+import Grant from './Grant'
 import $ from "jquery";
 class Roles extends React.Component {
     constructor() {
@@ -9,8 +10,9 @@ class Roles extends React.Component {
         this.state = {
             roles: [],
             modalTitle: "",
-            modalShow: false,
-            roleId: ""
+            editModalShow: false,
+            roleId: "",
+            grantShow: false
         }
         this.query = this.query.bind(this);
     }
@@ -46,11 +48,11 @@ class Roles extends React.Component {
                                 return (
                                     <span>
                                         <Button className="ant-btn ant-btn-sm" onClick={() => {
-                                            this.setState({ modalTitle: "编辑角色", modalShow: true, roleId: record.id });
+                                            this.setState({ modalTitle: "编辑角色", editModalShow: true, roleId: record.id });
                                         }}>编辑</Button>
                                         &nbsp;
-                                        <Button className="ant-btn ant-btn-sm" onClick={()=>{
-                                            this.setState({roleId:record.id})
+                                        <Button className="ant-btn ant-btn-sm" onClick={() => {
+                                            this.setState({ roleId: record.id ,grantShow:true})
                                         }}>授权</Button>
                                         &nbsp;
                                         {record.canDeleted &&
@@ -71,15 +73,19 @@ class Roles extends React.Component {
                             return record.id;
                         }} />
                 </Card>
-                <Modal key={this.state.roleId} title={this.state.modalTitle} visible={this.state.EditModalShow} onCancel={() => { this.setState({ modalShow: false }) }} footer={null}>
+                <Modal key={this.state.roleId} title={this.state.modalTitle} visible={this.state.editModalShow} onCancel={() => { this.setState({ editModalShow: false }) }} footer={null}>
                     <Role id={this.state.roleId}
                         onSubmit={() => {
 
                             this.query();
-                            this.setState({ modalShow: false });
+                            this.setState({ editModalShow: false });
                         }} />
                 </Modal>
-                <Modal title="授权" ></Modal>
+                <Modal title="授权" visible={this.state.grantShow} onCancel={()=>{
+                    this.setState({grantShow:false})
+                }}>
+                    <Grant />
+                </Modal>
             </div>
         )
     }
