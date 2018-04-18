@@ -10,8 +10,6 @@ import org.sft.sample.web.user.model.Role;
 import org.sft.sample.web.user.model.RolePermission;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.github.pagehelper.ISelect;
 import com.github.pagehelper.Page;
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;

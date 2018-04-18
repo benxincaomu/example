@@ -4,8 +4,7 @@ import java.util.List;
 
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.converter.HttpMessageConverter;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
-
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import com.alibaba.fastjson.serializer.PropertyFilter;
 import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.alibaba.fastjson.support.config.FastJsonConfig;
@@ -17,7 +16,7 @@ import com.alibaba.fastjson.support.spring.FastJsonHttpMessageConverter;
  *         2016年5月30日
  */
 @Configuration
-public class FastJSONMessageConfig extends WebMvcConfigurerAdapter {
+public class FastJSONMessageConfig implements WebMvcConfigurer {
 
 	/*
 	 * (non-Javadoc)
@@ -48,19 +47,7 @@ public class FastJSONMessageConfig extends WebMvcConfigurerAdapter {
 		FastJsonHttpMessageConverter fsConverter = new FastJsonHttpMessageConverter();
 		fsConverter.setFastJsonConfig(fastjsonConfig);
 		converters.add(fsConverter);
-		super.configureMessageConverters(converters);
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see
-	 * org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
-	 * #extendMessageConverters(java.util.List)
-	 */
-	@Override
-	public void extendMessageConverters(List<HttpMessageConverter<?>> converters) {
-		super.extendMessageConverters(converters);
-	}
 
 }

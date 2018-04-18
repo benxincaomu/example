@@ -38,8 +38,8 @@ public class DataSourceConfig {
 	}
 
 	@Bean
-	public FilterRegistrationBean filterRegistrationBean() {
-		FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
+	public FilterRegistrationBean<WebStatFilter> filterRegistrationBean() {
+		FilterRegistrationBean<WebStatFilter> filterRegistrationBean = new FilterRegistrationBean<>();
 		filterRegistrationBean.setFilter(new WebStatFilter());
 		filterRegistrationBean.addUrlPatterns("/*");
 		filterRegistrationBean.addInitParameter("exclusions", "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*");
@@ -47,7 +47,7 @@ public class DataSourceConfig {
 	}
 
 	@Bean
-	public ServletRegistrationBean druidServlet() {
-		return new ServletRegistrationBean(new StatViewServlet(), "/druid/*");
+	public ServletRegistrationBean<StatViewServlet> druidServlet() {
+		return new ServletRegistrationBean<StatViewServlet>(new StatViewServlet(), "/druid/*");
 	}
 }

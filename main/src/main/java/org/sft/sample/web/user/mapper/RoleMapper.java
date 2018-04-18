@@ -1,5 +1,6 @@
 package org.sft.sample.web.user.mapper;
 
+import java.security.Permission;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;
@@ -65,4 +66,9 @@ public interface RoleMapper {
 	 * @return
 	 */
 	int addRolePermission(RolePermission rolePermission);
+	/**
+	 * 获取所有的权限列表
+	 * @return
+	 */
+	public List<Permission> getAllPermissions();
 }

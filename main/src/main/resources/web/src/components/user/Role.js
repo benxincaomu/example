@@ -1,6 +1,7 @@
 import React from "react";
 import $ from "jquery";
-import { Form, Input, Button, message } from 'antd'
+import { Form, Input, Button, message } from 'antd';
+import PropTypes from 'prop-types';
 const FormItem = Form.Item
 
 class Role extends React.Component {
@@ -107,8 +108,8 @@ class Role extends React.Component {
     }
 }
 Role.propTypes = {
-    onSubmit: React.PropTypes.func,
-    id: React.PropTypes.string
+    onSubmit: PropTypes.func,
+    id: PropTypes.string
 }
 Role.defaultProps = {
     onSubmit: null,

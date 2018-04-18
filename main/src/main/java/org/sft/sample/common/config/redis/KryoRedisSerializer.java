@@ -10,7 +10,7 @@ import com.esotericsoftware.kryo.io.Output;
 public class KryoRedisSerializer<T> implements RedisSerializer<T> {
 	
 	@Override
-	public byte[] serialize(Object t) throws SerializationException {
+	public byte[] serialize(T t) throws SerializationException {
 		Kryo kryo = new Kryo();
 		byte[] buffer = new byte[2048];
 		Output output = new Output(buffer);

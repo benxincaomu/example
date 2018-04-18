@@ -23,7 +23,6 @@ public class UserController {
 	@ResponseBody
 	@RequestMapping(value = "addUser", method = { RequestMethod.POST, RequestMethod.GET })
     public User addUser(User user) {
-        user.setRoleId("1213");
         userService.addUser(user);
 		return user;
 	}
@@ -42,5 +41,8 @@ public class UserController {
 	public List<User> getUsers(String userName){
 		
 		return userService.findUsers(userName);
+	}
+	public void getMenus() {
+		
 	}
 }

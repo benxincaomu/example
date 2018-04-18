@@ -48,7 +48,7 @@
 	<select id="findPermissions" resultType="permission">
 		select * from permission
 	</select>
-	
+
 	<select id="findPermissionsByRoleId" resultType="permission">
 		select * from role_permission rp,permission p
 		<where>
@@ -67,7 +67,8 @@
 		(#{id},#{roleId},#{permissionId})
 	</insert>
 	<delete id="deleteRole" parameterType="string">
-		delete from role where id=#{id} and can_deleted=1
+		delete from role where
+		id=#{id} and can_deleted=1
 	</delete>
 	<delete id="deleteRolePermissions" parameterType="string">
 		delete from role_permission
@@ -75,7 +76,9 @@
 			role_id=#{roleId}
 		</where>
 	</delete>
-
+	<select id="getAllPermissions" resultType="org.sft.sample.web.user.model.Permission">
+		select * from permession
+	</select>
 
 
 </mapper>

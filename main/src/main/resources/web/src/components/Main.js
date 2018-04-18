@@ -50,7 +50,7 @@ class AppComponent extends React.Component {
                                     <SubMenu key='sub1' title={
                                         <span><Icon type="user" />菜单</span>
                                     }>
-                                        <Menu.Item>
+                                        <Menu.Item key="/users">
                                             <Link to="/users">用户管理</Link>
                                         </Menu.Item>
                                         <Menu.Item key='/roles'>
@@ -61,7 +61,7 @@ class AppComponent extends React.Component {
                             </Sider>
                             <Content style={{ background: '#fff', padding: 24, margin: 0, minHeight: 280 }}>
                                 <Route exact path="/users" component={Users} />
-                                 <Route exact path="/roles" component={Roles} />
+                                <Route exact path="/roles" component={Roles} />
                             </Content>
 
                         </Layout>
