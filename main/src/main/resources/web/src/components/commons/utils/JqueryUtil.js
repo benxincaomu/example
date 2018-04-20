@@ -35,7 +35,7 @@ export default class JqueryUtil {
     /** */
     static checkData(data) {
         if (data.sessionOut) {
-            message.warn("请登录");
+            message.warn("请登录",500);
             JqueryUtil.notLoginTodo();
             return false;
         } else if (data.errorCode) {

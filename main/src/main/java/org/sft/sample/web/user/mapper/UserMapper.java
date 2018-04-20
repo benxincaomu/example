@@ -48,6 +48,10 @@ public interface UserMapper {
 	 */
 	int updateUser(User user);
 	
+	/**
+	 * 删除用户
+	 */
+	int delteUser(@Param("userId")String userId);
 	
 	
 	

@@ -16,6 +16,8 @@ public class User {
     private String password;
     private String nickName;
     private String name;
+    private int sex;
+    private int age;
     @JSONField(serialize = false)
     private String roleId;
     private Role role;
@@ -64,7 +66,23 @@ public class User {
         this.name = name;
     }
 
-    public String getRoleId(){
+    public int getSex(){
+		return sex;
+	}
+
+	public void setSex(int sex){
+		this.sex = sex;
+	}
+
+	public int getAge(){
+		return age;
+	}
+
+	public void setAge(int age){
+		this.age = age;
+	}
+
+	public String getRoleId(){
         return roleId;
     }
 

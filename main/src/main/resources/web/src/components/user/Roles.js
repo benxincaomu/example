@@ -52,7 +52,7 @@ class Roles extends React.Component {
                                         }}>编辑</Button>
                                         &nbsp;
                                         <Button className="ant-btn ant-btn-sm" onClick={() => {
-                                            this.setState({ roleId: record.id ,grantShow:true})
+                                            this.setState({ roleId: record.id, grantShow: true })
                                         }}>授权</Button>
                                         &nbsp;
                                         {record.canDeleted &&
@@ -73,18 +73,15 @@ class Roles extends React.Component {
                             return record.id;
                         }} />
                 </Card>
-                <Modal key={this.state.roleId} title={this.state.modalTitle} visible={this.state.editModalShow} onCancel={() => { this.setState({ editModalShow: false }) }} footer={null}>
+                <Modal key={this.state.roleId} title={this.state.modalTitle} visible={this.state.editModalShow} onCancel={() => { this.setState({ editModalShow: false }); }} footer={null}>
                     <Role id={this.state.roleId}
                         onSubmit={() => {
-
                             this.query();
                             this.setState({ editModalShow: false });
                         }} />
                 </Modal>
-                <Modal title="授权" visible={this.state.grantShow} onCancel={()=>{
-                    this.setState({grantShow:false})
-                }}>
-                    <Grant />
+                <Modal title="授权" destroyOnClose={true} visible={this.state.grantShow} onCancel={() => { this.setState({ grantShow: false }); }} footer={null}>
+                    <Grant id={this.state.roleId} />
                 </Modal>
             </div>
         )

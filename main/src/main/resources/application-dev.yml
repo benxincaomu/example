@@ -8,12 +8,11 @@ spring:
     initialSize: 5
     minIdle: 5
     validationQuery: select 1
-  #redis:
-    #host: 192.168.112.134
-    #port: 6379
-    
-  #session:
-    #store-type: redis
+  redis:
+    host: 192.168.112.134
+    port: 6379
+  session:
+    store-type: redis
 mybatis:
   configuration:
     log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl

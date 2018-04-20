@@ -38,6 +38,11 @@ public class UserServiceImpl implements UserService{
 	public List<User> findUsers(String userName) {
 		return userMapper.findUsers(userName, null);
 	}
+
+	@Override
+	public int deleteUser(String userId){
+		return userMapper.delteUser(userId);
+	}
 	
 	
 

@@ -29,7 +29,18 @@ public interface UserService {
 	 * @return
 	 */
 	User findUserByUserName(String userName);
-	
+	/**
+	 * 
+	 * @param userName
+	 * @return
+	 */
 	List<User> findUsers(String userName);
+	
+	/**
+	 * 删除用户
+	 * @param userId 用户标识
+	 * @return 删除结果
+	 */
+	int deleteUser(String userId);
 	
 }

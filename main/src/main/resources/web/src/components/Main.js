@@ -23,6 +23,7 @@ class AppComponent extends React.Component {
 
     loginSuCallback() {
         this.setState({ isLogin: true });
+        window.location.reload();
     }
     notLoginTodo() {
         this.setState({ isLogin: false });
