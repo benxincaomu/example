@@ -35,7 +35,7 @@ class Roles extends React.Component {
                 <Card title="角色管理" bordered={false} style={{ width: "100%" }}>
                     <div>
                         <Button className="ant-btn ant-btn-lg" onClick={() => {
-                            this.setState({ modalTitle: "新增角色", roleId: "", modalShow: true });
+                            this.setState({ modalTitle: "新增角色", roleId: "", editModalShow: true });
                         }}>新增</Button>
                     </div>
                     <br />
@@ -57,10 +57,8 @@ class Roles extends React.Component {
                                         &nbsp;
                                         {record.canDeleted &&
                                             <Button className="ant-btn ant-btn-sm" onClick={() => {
-
                                             }}>删除</Button>
                                         }
-
                                         &nbsp;
                                   </span>
 

@@ -122,6 +122,12 @@ class User extends React.Component {
                             rules: []
                         })(<Input />)}
                     </FormItem>
+                    <FormItem label='角色' {...formItemLayout}>
+                        {getFieldDecorator('roleId', {
+                            initialValue: user.nickName,
+                            rules: []
+                        })(<Select />)}
+                    </FormItem>
                 </Form>
                 <Button onClick={function () {
                     // this.props.afterSubmit()

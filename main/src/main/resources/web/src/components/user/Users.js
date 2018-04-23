@@ -38,7 +38,7 @@ class Users extends React.Component {
                 <Card title="用户管理" bordered={false} style={{ width: "100%" }}>
                     <div>
                         <Button className="ant-btn ant-btn-lg" onClick={() => {
-                            this.setState({ userModelShow: true, userModelTitle: "新增用户",userId:"" });
+                            this.setState({ userModelShow: true, userModelTitle: "新增用户", userId: "" });
                         }}>新增</Button>
                     </div>
                     <br />
@@ -76,6 +76,7 @@ class Users extends React.Component {
                                                 userModelShow: true
                                             });
                                         }}>编辑</Button>&nbsp;&nbsp;
+                                        <Button className="ant-btn ant-btn-sm" >分配角色</Button>&nbsp;&nbsp;
                                         <Popconfirm title="确认删除？" onConfirm={() => {
                                             {/* ajax请求后台删除 */ }
                                             $.ajax({
@@ -87,6 +88,7 @@ class Users extends React.Component {
                                             });
                                             message.error("删除的是" + record.name);
                                         }}>
+                                            
                                             <Button className="ant-btn ant-btn-sm" >删除</Button>
                                         </Popconfirm>
                                         &nbsp;
@@ -102,7 +104,7 @@ class Users extends React.Component {
                             return record.id;
                         }} />
                 </Card>
-                <Modal title={this.state.userModelTitle} visible={this.state.userModelShow} onCancel={() => { this.setState({ userModelShow: false }) }} footer={null} destroyOnClose={true}>
+                <Modal title={this.state.userModelTitle} visible={this.state.userModelShow} onCancel={() => { this.setState({ userModelShow: false }) }} footer={null} destroyOnClose>
                     <User id={this.state.userId} afterSubmit={(values) => {
                         let idx = this.state.idx;
                         values["id"] = idx++;

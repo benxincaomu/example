@@ -9,33 +9,42 @@ class Grant extends Component {
         super(props);
         this.state = {
             permissions: [],
-            selectNode: []
+            selectNode: [],
+            rolePermissions:[]
         }
         this.eachPermission=this.eachPermission.bind(this);
+        this.getAllPermissions=this.getAllPermissions.bind(this);
     }
     componentWillMount() {
-        $.get("/web/role/permissions", {}, (data) => {
-            this.setState({ permissions: data })
-        }, "json");
+        this.getAllPermissions();
         this.query(this.props.id);
     }
     componentWillReceiveProps(props) {
         if (!props.id) {
             this.resetState();
-            // this.props.form.resetFields();
             return;
         }
         if (props.id === this.state.id) {
             return;
         }
-
+        
         this.query(props.id);
+    }
+    getAllPermissions(){
+        $.get("/web/role/permissions", {}, (data) => {
+            this.setState({ permissions: data })
+        }, "json");
     }
     query(id) {
         if (id) {
-
             $.get("./web/role/getRole", { id: id }, (data) => {
-                this.setState({ roleId: id, permissions: data.permissions });
+                this.setState({ roleId: id});
+                let rolePermissions=data.permissions;
+                let perArry=[];
+                rolePermissions.map((permission,index)=>{
+                    perArry.push(permission.id);
+                })
+                this.setState({rolePermissions:perArry})
             }, "json");
         }
     }
@@ -47,7 +56,7 @@ class Grant extends Component {
         })
     }
     render() {
-        return (<Tree checkable>
+        return (<Tree defaultValue={this.state.perArry} checkable >
                 {this.eachPermission(this.state.permissions)}
         </Tree>);
     }
