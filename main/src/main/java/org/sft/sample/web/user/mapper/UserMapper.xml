@@ -5,8 +5,8 @@
 		<id column="id" property="id"/>
 		<association property="role" column="role_id" select="org.sft.sample.web.user.mapper.RoleMapper.findRoleById" />
 	</resultMap>
-
-	<insert id="addUser" parameterType="user">
+	
+	<insert id="addUser" parameterType="user" >
 		<selectKey keyProperty="id" resultType="String" order="BEFORE">
 			select replace(uuid(),'-','') from dual
 		</selectKey>

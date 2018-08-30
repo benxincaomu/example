@@ -24,6 +24,7 @@ export default class JqueryUtil {
                 let _success = settings.success;
                 settings.success = (data, textStatus, jqXHR) => {
                     if (JqueryUtil.checkData(data)) {
+                        console.log(data);
                         _success(data, textStatus, jqXHR)
                     }
                 }

@@ -7,6 +7,7 @@ import createBrowserHistory from "history/createBrowserHistory";
 import Users from "./user/Users";
 import Login from "./home/Login";
 import Roles from "./user/Roles";
+import  "../test/mock";
 
 const history = createBrowserHistory();
 const { SubMenu } = Menu;
