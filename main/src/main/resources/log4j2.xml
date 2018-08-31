@@ -2,7 +2,7 @@
 <Configuration status="WARN" monitorInterval="30">
 	<Properties>
 		<Property name="PID">????</Property>
-		<Property name="LOG_PATTERN">%clr{%d{yyyy-MM-dd HH:mm:ss}} %clr{%5p} %clr{---}{faint} %clr{[%t]}{faint} %clr{%c}{cyan} %clr{:}{faint} %m%n%xwEx</Property>
+		<Property name="LOG_PATTERN">%clr{%d{yyyy-MM-dd HH:mm:ss}} %clr{%5p} %clr{---}{faint} %clr{[%t]}{faint} %clr{%c}{cyan} %clr{:}{faint} %m (%F:%L)%n</Property>
 	</Properties>
 	<Appenders>
 		<Console name="Console" target="SYSTEM_OUT" follow="true">
