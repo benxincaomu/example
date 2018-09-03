@@ -5,10 +5,13 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.sft.sample.common.utils.SampleResultRender;
 import org.sft.sample.web.user.model.Permission;
 import org.sft.sample.web.user.model.Role;
 import org.sft.sample.web.user.service.RoleService;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -22,6 +25,10 @@ import com.github.pagehelper.PageInfo;
 public class RoleController{
 	@Resource
 	private RoleService roleService;
+	@Value("remoteP")
+	private String remoteP;
+	
+	private final Logger log=LogManager.getLogger(getClass());
 
 	/**
 	 * 新增角色信息
@@ -36,7 +43,7 @@ public class RoleController{
 
 	@GetMapping("findRoles")
 	public PageInfo<Role> findRoles(String roleName,Page<Role> page){
-
+		log.info("remoteP="+remoteP);
 		return roleService.findRoles(roleName, page);
 	}
 

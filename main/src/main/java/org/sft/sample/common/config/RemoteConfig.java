@@ -1,30 +1,37 @@
 package org.sft.sample.common.config;
 
-import javax.annotation.Resource;
+import java.util.Properties;
 
-import org.springframework.boot.autoconfigure.AutoConfigureAfter;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.core.Ordered;
-import org.springframework.core.annotation.Order;
-import org.springframework.core.env.Environment;
+import org.springframework.beans.factory.FactoryBean;
+import org.springframework.beans.factory.InitializingBean;
+import org.springframework.stereotype.Service;
 
 /**
  * @author sunfutao
  *
  * @since 2018年8月30日
  */
-@Configuration
-@AutoConfigureAfter(value = Environment.class)
-@Order(Ordered.HIGHEST_PRECEDENCE)
-public class RemoteConfig{
-	@Resource
-	private Environment evn;
-	@Bean
-	public String ss() {
+@Service
+public class RemoteConfig implements InitializingBean,FactoryBean<Properties>{
+	private Properties props=new Properties();
+	@Override
+	public void afterPropertiesSet() throws Exception{
 		System.out.println();
-		return "";
+		System.out.println();
+		System.out.println();
+		props.setProperty("remoteP", "remote");
+		
 	}
-	
+
+	@Override
+	public Properties getObject() throws Exception{
+		return props;
+	}
+
+	@Override
+	public Class<?> getObjectType(){
+		
+		return Properties.class;
+	}
 	
 }
