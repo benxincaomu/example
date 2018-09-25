@@ -6,7 +6,7 @@
 		<artifactId>example</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
-	<artifactId>main</artifactId>
+	<artifactId>web</artifactId>
 	<name>main</name>
 	<url>http://maven.apache.org</url>
 	<properties>

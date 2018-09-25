@@ -92,7 +92,7 @@
 		</dependency>
 	</dependencies>
 	<modules>
-		<module>main</module>
+		<module>web</module>
 	</modules>
 	<build>
 		<resources>
