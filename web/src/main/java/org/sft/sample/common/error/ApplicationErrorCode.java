@@ -2,6 +2,7 @@ package org.sft.sample.common.error;
 
 public enum ApplicationErrorCode {
 	SYSTEM_ERROR("-1","系统异常"),
+	NOT_LOGIN("-2","用户未登录"),
 	VALIDATECODE_FAILURE("1000","验证码错误"),
 	USERNAME_OR_PASSWORD_FAILURE("10001","用户名或密码错误:%s"),
 	RESOURCE_NOT_EXIST("40004", "指定的资源不存在"),
